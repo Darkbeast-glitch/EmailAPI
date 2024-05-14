@@ -17,6 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+
+admin.site.site_header = "GeekAPI Dashboard"
+admin.site.site_title = "FlutterByte - GeekAPI"
+admin.site.index_title = "GeekAPI- FlutterByte"
+admin.site.description = "GeekAPI- FlutterByte"
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('email_api.urls')),
