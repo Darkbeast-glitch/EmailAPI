@@ -6,10 +6,10 @@ from .models import Email
 
 class EmailAdmin(admin.ModelAdmin):
     # fields to display in list view
-    list_display = ('id', 'subject', 'sent_at', 'status')
-    search_fields = ['subject', 'content']  # fields to search
-    list_filter = ('status', 'sent_at')  # fields to filter
-    ordering = ['-sent_at']  # order by sent_at in descending order
+    list_display = ('id', 'email')
+    search_fields = ['email',]  # fields to search
+    list_filter = ('id', 'email')  # fields to filter
+    ordering = ['-id']  # order by sent_at in descending order
 
 
 admin.site.register(Email, EmailAdmin)
