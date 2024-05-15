@@ -39,11 +39,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'email_api',
+
+    # cors
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    # cors middleware goes here
+    'corsheaders.middleware.CorsMiddleware',
+
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -51,6 +57,36 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# ALLOW ALL ORIGNS
+# CORS configurations
+CORS_ORIGIN_ALLOW_ALL = True
+
+
+def allowed_origins_func(request):
+    return [
+        "http://localhost:3000",
+        "https://Fbc-conf-2024.netlify.app",
+
+    ]
+
+
+CORS_ALLOWED_ORIGINS = [
+    allowed_origins_func,
+]
+CORS_ALLOW_METHODS = [
+    "GET",
+    "POST",
+    "PUT",
+    "DELETE",
+]
+
+CORS_ALLOW_HEADERS = [
+    "Content-Type",
+    "Authorization",
+]
+
+
+# End cors configurations
 ROOT_URLCONF = 'geekEmail.urls'
 
 TEMPLATES = [
